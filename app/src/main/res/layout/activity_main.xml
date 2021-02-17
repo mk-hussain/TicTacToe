@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
     <TextView
-        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -30,7 +29,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/username"
+            android:id="@+id/userName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="40dp"
@@ -42,11 +41,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Vs"
-
             android:textSize="20dp" />
 
         <TextView
-            android:id="@+id/opponent"
+            android:id="@+id/opponentName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
@@ -60,20 +58,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
         <TextView
-            android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_marginLeft="120dp"
             android:layout_height="wrap_content"
             android:text="Current Turn:-" />
 
         <TextView
-            android:id="@+id/username1"
+            android:id="@+id/username2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="KAINAT"
@@ -99,8 +95,6 @@
             android:text="KAINAT"
             android:textStyle="bold" />
         <TextView
-
-
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="120dp"
@@ -111,17 +105,11 @@
             android:layout_marginLeft="15dp"
             android:text="OPPONENT"
             android:textStyle="bold" />
-        <TextView
 
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="120dp"
-            android:text="X" />
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/imageView38"
+        android:id="@+id/imageView3"
         android:layout_width="wrap_content"
         android:layout_height="340dp"
         android:layout_marginTop="172dp"
@@ -132,7 +120,6 @@
         app:srcCompat="@drawable/grid" />
 
     <LinearLayout
-        android:id="@+id/linearLayout3"
         android:layout_width="314dp"
         android:layout_height="325dp"
         android:layout_marginTop="178dp"
@@ -151,8 +138,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0"
                 android:onClick="tap"
-                android:tag="1"
-
+                android:tag="0"
                 />
 
             <ImageView
@@ -161,7 +147,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0"
                 android:onClick="tap"
-                android:tag="2" />
+                android:tag="1" />
 
             <ImageView
                 android:id="@+id/i3"
@@ -169,7 +155,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0"
                 android:onClick="tap"
-                android:tag="3" />
+                android:tag="2" />
         </LinearLayout>
 
         <LinearLayout
@@ -182,7 +168,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0"
                 android:onClick="tap"
-                android:tag="4" />
+                android:tag="3" />
 
             <ImageView
                 android:id="@+id/i5"
@@ -190,7 +176,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0"
                 android:onClick="tap"
-                android:tag="5" />
+                android:tag="4" />
 
             <ImageView
                 android:id="@+id/i6"
@@ -198,7 +184,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0"
                 android:onClick="tap"
-                android:tag="6" />
+                android:tag="5" />
         </LinearLayout>
 
         <LinearLayout
@@ -212,7 +198,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0"
                 android:onClick="tap"
-                android:tag="7" />
+                android:tag="6" />
 
             <ImageView
                 android:id="@+id/i8"
@@ -220,7 +206,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0"
                 android:onClick="tap"
-                android:tag="8" />
+                android:tag="7" />
 
             <ImageView
                 android:id="@+id/i9"
@@ -229,7 +215,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0"
                 android:onClick="tap"
-                android:tag="9" />
+                android:tag="8" />
 
         </LinearLayout>
     </LinearLayout>
@@ -290,21 +276,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView38"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
         app:layout_constraintVertical_bias="0.807">
 
         <Button
             android:id="@+id/blog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="blogs"
             android:onClick="blog"
+            android:text="blogs"
             android:textAllCaps="true" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="friends"
+            android:onClick="registerActivity"
+            android:text="register"
             android:textAllCaps="true" />
     </LinearLayout>
 
