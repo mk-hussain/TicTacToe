@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--<item
+        android:title="Search"
+        android:id="@+id/search_icon"// this add a menu left of overFlow
+        android:icon="@drawable/ic_baseline_search_24"
+        app:showAsAction="ifRoom"/>-->
+
+    <item
+        android:title="Main Menu"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_baseline_more_vert_24" >
+        <menu>
+            <item
+                android:title="Settings"
+                android:icon="@drawable/ic_baseline_settings_24"
+                android:id="@+id/settings"
+                app:showAsAction="never"/>
+            <item
+                android:title="Play With BOT"
+                android:icon="@drawable/ic_baseline_android_24"
+                android:id="@+id/playWithBot"
+                app:showAsAction="never"
+                />
+            <item
+                android:title="2 Player Offine"
+                android:icon="@drawable/ic_baseline_games_24"
+                android:id="@+id/doublePlayer"
+                app:showAsAction="never"/>
+            <item
+                android:title="Logout"
+                android:icon="@drawable/ic_baseline_login_24"
+                android:id="@+id/logout"
+                app:showAsAction="never"/>
+
+
+        </menu>
+    </item>
+
+</menu>

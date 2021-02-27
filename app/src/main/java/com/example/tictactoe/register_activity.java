@@ -37,6 +37,7 @@ public class register_activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_activity);
+        getWindow().setStatusBarColor(this.getResources().getColor(R.color.black));//set status bar color BLACK
         fullname=findViewById(R.id.fullname);
         phoneNo=findViewById(R.id.phone);
         email=findViewById(R.id.email);

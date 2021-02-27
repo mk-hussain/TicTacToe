@@ -11,14 +11,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TicTacToe">
-        <activity android:name=".home"></activity>
+        <activity android:name=".twoPlayer"></activity>
+        <activity android:name=".offline_Multiplayer" />
+        <activity android:name=".playWithBot" />
+        <activity android:name=".home" />
         <activity android:name=".loose" />
         <activity android:name=".congratulation" />
         <activity android:name=".blog" />
-        <activity android:name=".login_activity" />
+        <activity android:name=".MainActivity" />
         <activity android:name=".register_activity" />
         <activity
-            android:name=".MainActivity"
+            android:name=".login_activity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

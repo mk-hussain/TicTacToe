@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Tic Tac Toe</string>
+    <string name="title_activity_testingbottomnavigation">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>

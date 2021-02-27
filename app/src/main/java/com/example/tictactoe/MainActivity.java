@@ -1,5 +1,4 @@
 package com.example.tictactoe;
-
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.media.MediaPlayer;
@@ -14,9 +13,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
-
-
-
     TextView userName,opponentName;
     Boolean gameActive=true;
     Button blog;
@@ -24,23 +20,22 @@ public class MainActivity extends AppCompatActivity {
     EditText msg;
     MediaPlayer tapsound;
 
-
-
     //player 0-X,1-O
     int player1=0;//x
     int player2=1;//0
     int activePlayer=0;
     int[] gameState ={2,2,2,2,2,2,2,2,2};
     // 0-x,1-O,2-null
-    int [] [] winningPosition= {{0,1,2},{3,4,5},{6,7,8},{0,3,6},{1,4,7},{2,5,8},{0,4,8},{2,4,6}};
+    int [] [] winningPosition= {{0,1,2},{3,4,5},{6,7,8},{0,3,6},{1,4,7},{2,5,8},{0,4,8},{2,4,6}};//2D array in java,winningPosition[3][2]=7
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mFirebaseDatabaseReference;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getWindow().setStatusBarColor(this.getResources().getColor(R.color.black));//set status bar color BLACK
+
         mFirebaseDatabase=FirebaseDatabase.getInstance();
         mFirebaseDatabaseReference =mFirebaseDatabase.getReference().child("message");
 
@@ -54,7 +49,22 @@ public class MainActivity extends AppCompatActivity {
         i8=findViewById(R.id.i8);
         i9=findViewById(R.id.i9);
 
-
+    }
+    public void winCheck(int a,int b,int c){
+//0-a,1-b,2-c
+        if ((gameState[0]==gameState[1])&&(gameState[1]==gameState[2]))//0-X,1-O
+        {
+            if (gameState[0]==0)
+            {
+               // startActivity(i1);
+                Toast.makeText(this, "X has win the game", Toast.LENGTH_SHORT).show();
+            }
+            else if (gameState[0]==1)
+            {
+              //  startActivity(i1);
+                Toast.makeText(this, "O has win the game", Toast.LENGTH_SHORT).show();
+            }
+        }
 
     }
 
@@ -70,7 +80,6 @@ public class MainActivity extends AppCompatActivity {
         ImageView img =(ImageView) view;
         int tag= Integer.parseInt(img.getTag().toString());
         if (gameState[tag]==2) {
-
             tapsound=MediaPlayer.create(this,R.raw.tapsound);
         tapsound.start();
         gameState[tag]=activePlayer;
@@ -78,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
         if (activePlayer==0)//1-O & 0-X
         {
             img.setImageResource(R.drawable.x);
-          activePlayer=1;
+            activePlayer=1;
         }
         else
         {
@@ -89,6 +98,8 @@ public class MainActivity extends AppCompatActivity {
         }
         else Toast.makeText(this, "Already Filled tap another grid", Toast.LENGTH_SHORT).show();
         // i will make a winner function to check if one has won
+
+
 
         if ((gameState[0]==gameState[1])&&(gameState[1]==gameState[2]))//0-X,1-O
         {
