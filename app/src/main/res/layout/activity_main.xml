@@ -139,8 +139,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0"
                 android:onClick="tap"
-                android:tag="0"
-                />
+                android:tag="0" />
 
             <ImageView
                 android:id="@+id/i2"

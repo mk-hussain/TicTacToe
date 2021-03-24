@@ -53,60 +53,36 @@
             android:textSize="15dp" />
 
     </LinearLayout>
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_marginLeft="120dp"
-            android:layout_height="wrap_content"
-            android:text="Current Turn:-" />
+    <!-- <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_marginTop="44dp"
+         android:orientation="horizontal"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintHorizontal_bias="0.0"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
-        <TextView
-            android:id="@+id/username2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="KAINAT"
-            android:layout_marginLeft="15dp"
-            android:textStyle="bold"/>
-    </LinearLayout>
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginLeft="15dp"
+             android:text="KAINAT"
+             android:textStyle="bold" />
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginLeft="120dp"
+             android:text="0" />
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginLeft="15dp"
+             android:text="OPPONENT"
+             android:textStyle="bold" />
 
-   <!-- <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:text="KAINAT"
-            android:textStyle="bold" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="120dp"
-            android:text="0" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:text="OPPONENT"
-            android:textStyle="bold" />
-
-    </LinearLayout>-->
+     </LinearLayout>-->
 
     <ImageView
         android:id="@+id/imageView3"
@@ -133,7 +109,7 @@
             android:layout_height="107dp">
 
             <ImageView
-                android:id="@+id/i1"
+                android:id="@+id/i0"
                 android:layout_width="104dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0"
@@ -142,7 +118,7 @@
                 />
 
             <ImageView
-                android:id="@+id/i2"
+                android:id="@+id/i1"
                 android:layout_width="105dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0"
@@ -150,7 +126,7 @@
                 android:tag="1" />
 
             <ImageView
-                android:id="@+id/i3"
+                android:id="@+id/i2"
                 android:layout_width="107dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0"
@@ -163,7 +139,7 @@
             android:layout_height="107dp">
 
             <ImageView
-                android:id="@+id/i4"
+                android:id="@+id/i3"
                 android:layout_width="104dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0"
@@ -171,7 +147,7 @@
                 android:tag="3" />
 
             <ImageView
-                android:id="@+id/i5"
+                android:id="@+id/i4"
                 android:layout_width="105dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0"
@@ -179,7 +155,7 @@
                 android:tag="4" />
 
             <ImageView
-                android:id="@+id/i6"
+                android:id="@+id/i5"
                 android:layout_width="107dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0"
@@ -193,7 +169,7 @@
             android:layout_marginTop="7dp">
 
             <ImageView
-                android:id="@+id/i7"
+                android:id="@+id/i6"
                 android:layout_width="104dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0"
@@ -201,7 +177,7 @@
                 android:tag="6" />
 
             <ImageView
-                android:id="@+id/i8"
+                android:id="@+id/i7"
                 android:layout_width="101dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0"
@@ -209,7 +185,7 @@
                 android:tag="7" />
 
             <ImageView
-                android:id="@+id/i9"
+                android:id="@+id/i8"
                 android:layout_marginLeft="10dp"
                 android:layout_width="107dp"
                 android:layout_height="match_parent"

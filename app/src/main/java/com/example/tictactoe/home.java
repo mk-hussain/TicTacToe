@@ -24,7 +24,7 @@ import java.util.ArrayList;
 
 public class home extends AppCompatActivity {
     TextView name,mail;
-    ListView myListView;
+    ListView usersList;
     ArrayList<String> myArrayList=new ArrayList<>();
     DatabaseReference mRef;
     @Override
@@ -32,7 +32,7 @@ public class home extends AppCompatActivity {
         switch (item.getItemId())
         {
             case R.id.playWithBot:
-                Intent i=new Intent(home.this,playWithBot.class);
+                Intent i=new Intent(this,playWithBot.class);
                 startActivity(i);
                 Toast.makeText(this, "PLAY!!", Toast.LENGTH_SHORT).show();
                 return true;
@@ -63,15 +63,15 @@ public class home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         mRef= FirebaseDatabase.getInstance().getReference();
-        name=findViewById(R.id.name);
-        mail=findViewById(R.id.mail);
+        //name=findViewById(R.id.name);
+        //mail=findViewById(R.id.mail);
         getWindow().setStatusBarColor(this.getResources().getColor(R.color.black));//set status bar color BLACK
         GoogleSignInAccount signInAccount= GoogleSignIn.getLastSignedInAccount(this);
         if (signInAccount != null)
         {
-            name.setText(signInAccount.getDisplayName());
+           // name.setText(signInAccount.getDisplayName());
 
-            mail.setText(signInAccount.getEmail());
+            //mail.setText(signInAccount.getEmail());
         }
     }
 

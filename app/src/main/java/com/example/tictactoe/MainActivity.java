@@ -13,9 +13,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
+    //THE PERSON WHO SEND REQUEST FIRST WILL GET SIGN X,OTHER WILL GET O
     TextView userName,opponentName;
     Boolean gameActive=true;
     Button blog;
+    int playingState=0;
+    /* 1-can be played further(if all blocks are not filled or no one has win),2-someone has win(winning condition satisfied),
+    3-DRAW(all blocks filled but no one has win)*/
     ImageView i1,i2,i3,i4,i5,i6,i7,i8,i9;
     EditText msg;
     MediaPlayer tapsound;
@@ -69,6 +73,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void tap(View view) {
+        ImageView img =(ImageView) view;
+
         String userName="KAINAT";
         String opponentName="OPPONENT";
         Intent i1=new Intent(this,congratulation.class);
@@ -77,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
         Intent i2=new Intent(this,loose.class);
         /*i2.putExtra(EXTRA_TEXT,userName);
         i2.putExtra(EXTRA_TEXT2,opponentName);*/
-        ImageView img =(ImageView) view;
+
         int tag= Integer.parseInt(img.getTag().toString());
         if (gameState[tag]==2) {
             tapsound=MediaPlayer.create(this,R.raw.tapsound);
