@@ -1,103 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:fitsSystemWindows="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
     tools:context=".home">
 
-
-   <com.google.android.material.appbar.AppBarLayout
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:id="@+id/appBarLayout"
-       android:background="@color/teal_200"
-       android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar">
-
-      <androidx.appcompat.widget.Toolbar
-          android:id="@+id/toolbar"
-          android:background="@color/teal_700"
-          app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-          android:layout_width="match_parent"
-          android:layout_height="?actionBarSize"/>
-      <com.google.android.material.tabs.TabLayout
-          android:id="@+id/TabLayout"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          app:tabGravity="fill"
-          app:tabTextColor="@color/white"
-          app:tabIndicatorHeight="1.5dp"
-          app:tabMode="fixed"
-          app:tabIndicatorColor="@color/white"/>
-
-
-
-
-   </com.google.android.material.appbar.AppBarLayout>
-
-   <androidx.viewpager.widget.ViewPager
-       android:id="@+id/viewpager"
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"
-       app:layout_behavior="com.google.android.material.appbar.AppBar"/>
-   <!-- <TextView
-        android:id="@+id/mail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="248dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.542"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name" />
-
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="256dp"
-        android:text="TextView" />
-        <LinearLayout
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:background="@color/teal_200"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Home"
-            android:textSize="50sp"
-            android:textStyle="bold" />
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="@color/teal_700"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
-        <TextView
-            android:layout_width="wrap_content"
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="100dp"
-            android:onClick="blogOpen"
-            android:text="Blog"
-            android:textSize="50sp"
-            android:textStyle="bold" />
-    </LinearLayout>
+            android:background="@color/teal_700"
+            app:tabGravity="fill"
+            app:tabIndicatorColor="@color/white"
+            app:tabIndicatorHeight="1.5dp"
+            app:tabMode="fixed"
+            app:tabTextColor="@color/white" />
+    </com.google.android.material.appbar.AppBarLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Your ID=" />
-        <TextView
-            android:id="@+id/UserId"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
-    <ListView
-        android:id="@+id/usersList"
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewpager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>-->
+        android:layout_height="match_parent"
+        android:layout_below="@+id/appBarLayout"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
+    <!-- <TextView
+         android:id="@+id/mail"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginTop="248dp"
+         android:text="TextView"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintHorizontal_bias="0.542"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toBottomOf="@+id/name" />
 
-</LinearLayout>
+     <TextView
+         android:id="@+id/name"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginTop="256dp"
+         android:text="TextView" />
+         <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="horizontal">
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="Home"
+             android:textSize="50sp"
+             android:textStyle="bold" />
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginLeft="100dp"
+             android:onClick="blogOpen"
+             android:text="Blog"
+             android:textSize="50sp"
+             android:textStyle="bold" />
+     </LinearLayout>
+
+     <LinearLayout
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:orientation="horizontal">
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="Your ID=" />
+         <TextView
+             android:id="@+id/UserId"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content" />
+     </LinearLayout>
+     <ListView
+         android:id="@+id/usersList"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"/>-->
+
+</RelativeLayout>
