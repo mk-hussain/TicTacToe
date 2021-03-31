@@ -222,11 +222,6 @@ public class MainActivity extends AppCompatActivity {
         msg.setText("");
     }
 
-    public void blog(View view)
-    {
-        Intent i=new Intent(MainActivity.this,blog.class);
-        startActivity(i);
-    }
 
     public void registerActivity(View view) {
         Intent i=new Intent(this,login_activity.class);

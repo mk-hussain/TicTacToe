@@ -25,7 +25,6 @@ import java.util.ArrayList;
 
 public class home extends AppCompatActivity {
 
-    TextView name,mail;
     ListView usersList;
     private ViewPagerAdapter viewPagerAdapter;
     private TabLayout tabLayout;
@@ -80,30 +79,33 @@ public class home extends AppCompatActivity {
         //tabLayout.setupWithViewPager(viewPager);
 
 
-        viewPagerAdapter.AddFragment(new UsersList(),"PLAYERS");
+        viewPagerAdapter.AddFragment(new UsersList(),"SEND REQUEST");
+        viewPagerAdapter.AddFragment(new acceptRequest(),"ACCEPT REQUEST");
         viewPagerAdapter.AddFragment(new blogPage(),"BLOG");//add fragments here
-
 
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
         //tabLayout.getTabAt(0).setIcon(R.drawable.list);//set icon to tabs
 
         mRef= FirebaseDatabase.getInstance().getReference();
-        //name=findViewById(R.id.name);
-        //mail=findViewById(R.id.mail);
-        getWindow().setStatusBarColor(this.getResources().getColor(R.color.black));//set status bar color BLACK
-        GoogleSignInAccount signInAccount= GoogleSignIn.getLastSignedInAccount(this);
-        /*if (signInAccount != null)
-        {
-           name.setText(signInAccount.getDisplayName());
 
-           mail.setText(signInAccount.getEmail());
-        }*/
+        GoogleSignInAccount signInAccount= GoogleSignIn.getLastSignedInAccount(this);
+        String LoginUID=signInAccount.getId();//LoginUID IS A INTEGER EG.116171117870835209803
+        String LoginUserID=signInAccount.getEmail();//this we should show some were so that user can know with which id he is logged in
+        String UserName=modifiedUserName(LoginUserID);//we remove @gmail.com as firebase wont accept it  as string
+        mRef.child("users").child(UserName).child("Request").setValue(LoginUID); // we must first check weather we have any request or not then update it
+
+        getWindow().setStatusBarColor(this.getResources().getColor(R.color.black));//set status bar color BLACK
+
     }
 
-    public void blogOpen(View view) {
-        Intent i=new Intent(home.this,blog.class);
-        startActivity(i);
+    private String modifiedUserName(String userName) {
+        //userName=kainathussain63@gmail.com,we want to remove from @ part as firebase result in error,length=24,@-com 10,index
+        int lastIndex=userName.length();
+        String modifiedUserName=userName.substring(0,lastIndex-10);
+        return modifiedUserName;//returns kainathussain63
+    }
+
     }
    /* private void setupViewPager(ViewPager viewPager){
         ViewPagerAdapter viewPagerAdapter=new ViewPagerAdapter(getSupportFragmentManager());
@@ -111,4 +113,3 @@ public class home extends AppCompatActivity {
         viewPagerAdapter.addFragment(new blogPage(),"BLOG");
 
     }*/
-}

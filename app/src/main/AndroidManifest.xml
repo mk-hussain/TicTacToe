@@ -18,9 +18,7 @@
         <activity android:name=".home" />
         <activity android:name=".loose" />
         <activity android:name=".congratulation" />
-        <activity android:name=".blog" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".register_activity" />
         <activity
             android:name=".login_activity"
             android:screenOrientation="portrait">

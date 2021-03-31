@@ -2,26 +2,39 @@ package com.example.tictactoe;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link blogPage#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.Map;
+
 public class blogPage extends Fragment {
     View view;
+    private TextView tv;
+    private EditText et;
+    private Button send;
+    private FirebaseDatabase mDatabase;// gives reference of whole database
+    private DatabaseReference mRef;//give ref of specific area of database here parent node
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
+
     private String mParam1;
     private String mParam2;
 
@@ -29,15 +42,6 @@ public class blogPage extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment blogPage.
-     */
-    // TODO: Rename and change types and number of parameters
     public static blogPage newInstance(String param1, String param2) {
         blogPage fragment = new blogPage();
         Bundle args = new Bundle();
@@ -61,6 +65,48 @@ public class blogPage extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment -
         view= inflater.inflate(R.layout.fragment_blog_page, container, false);
+
+
+        mDatabase=FirebaseDatabase.getInstance();
+        mRef=mDatabase.getReference();
+        // no input means provide ref to parent node if provided path like"child/users",ref will be of that if not exist will be created
+        send=view.findViewById(R.id.send);
+        et=view.findViewById(R.id.editText);
+        tv=view.findViewById(R.id.tv);
+        send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String text=et.getText().toString();
+              //  mRef.setValue(text);//this will insert value to parent key   tic-tac-toe-a77af-default-rtdb: like this
+                mRef.child("users").setValue(text);
+                //mRef is pointing to a object not a string
+
+                // key value pair in firebase is handled by hashmap
+                mRef.child("users").addValueEventListener(new ValueEventListener() {  //this has a single value when is changed this is called
+
+                    Map<String,Object> data;
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                       // triggered 1st time+data change
+                        // get whole data in snapshot lika a photo
+                       // data= (Map<String, Object>) snapshot.getValue();
+                        //String name=data.get("Name").toString();
+                        tv.setText(text);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        //error handling here
+
+                    }
+                });
+
+            }
+        });
+
+
+
+
         return view;
     }
 }
