@@ -40,7 +40,7 @@ public class UsersList extends Fragment {
     ListView userList;
     ArrayAdapter<String> myArrayAdapter;
     //private RecyclerView myRecyclerView;
-   // private List<itemUserlist> lstUser;
+   // private List<Blog> lstUser;
     View view;
 
 /*
@@ -67,8 +67,8 @@ public class UsersList extends Fragment {
         super.onCreate(savedInstanceState);
 
         // lstUser=new ArrayList<>();
-        //lstUser.add(new itemUserlist("Kainat Hussain",R.drawable.ic_baseline_android_24));
-        //lstUser.add(new itemUserlist("Kainat Hussain",R.drawable.ic_baseline_android_24));
+        //lstUser.add(new Blog("Kainat Hussain",R.drawable.ic_baseline_android_24));
+        //lstUser.add(new Blog("Kainat Hussain",R.drawable.ic_baseline_android_24));
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -88,8 +88,9 @@ public class UsersList extends Fragment {
         String Username=signInAccount.getEmail();//email of every person is unique
         String UserName=modifiedUserName(Username);//if two people of same name there will be error username has to be unique
         //myRecyclerView=view.findViewById(R.id.user_recyclerview);
-        //RecyclerViewAdapter recyclerViewAdapter=new RecyclerViewAdapter(getContext(),lstUser);
         //myRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        //RecyclerViewAdapter recyclerViewAdapter=new RecyclerViewAdapter(getContext(),lstUser);
+
         //myRecyclerView.setAdapter(recyclerViewAdapter);
 
         mRef.child("users").addValueEventListener(new ValueEventListener() {
@@ -152,6 +153,7 @@ public class UsersList extends Fragment {
                // mRef.child("users").child(OtherPlayer).child("Request").push().setValue(LoginUserID);//jiske sath game khelna hai uske Request par apna LoginUserID(Email) push kar rha hun
                 mRef.child("users").child(OtherPlayer).child("Request").push().setValue(UserName);
                     StartGame(UserName + ":" + OtherPlayer, OtherPlayer, "To");
+                    //PlayerGameId=jisne send kiya:jisne recieve kiya
             }
 
             private String modifiedUserName(String userName) {
