@@ -12,23 +12,39 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TicTacToe">
-        <activity android:name=".postActivity"></activity>
-        <activity android:name=".twoPlayer" />
-        <activity android:name=".offline_Multiplayer" />
-        <activity android:name=".playWithBot" />
-        <activity android:name=".home" />
-        <activity android:name=".loose" />
-        <activity android:name=".congratulation" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".login_activity"></activity>
         <activity
-            android:name=".login_activity"
+            android:name=".postActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".twoPlayer"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".offline_Multiplayer"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".playWithBot"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".home"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".loose"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".congratulation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".splash_screen"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            :
         </activity>
     </application>
 

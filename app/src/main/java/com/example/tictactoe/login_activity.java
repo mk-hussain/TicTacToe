@@ -37,6 +37,7 @@ public class login_activity extends AppCompatActivity {
         if (user !=null){
             Intent i=new Intent(getApplicationContext(),home.class);
             startActivity(i);
+            finish();
         }
     }
 
@@ -55,6 +56,14 @@ public class login_activity extends AppCompatActivity {
                 
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
+
+        login_activity.this.finish();
+        System.exit(0);
     }
 
     private void createRequest() {
@@ -103,6 +112,7 @@ public class login_activity extends AppCompatActivity {
                                 FirebaseUser user = mAuth.getCurrentUser();
                                 Intent i=new Intent(getApplicationContext(),home.class);
                                 startActivity(i);
+                                finish();
 
                             } else {
                                 // If sign in fails, display a message to the user.

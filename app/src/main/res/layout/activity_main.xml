@@ -3,52 +3,55 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_marginTop="32dp"
     android:layout_width="match_parent"
+    android:background="@drawable/back"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
     <ImageView
+        android:id="@+id/imageView5"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:layout_marginTop="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ttt" />
+
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/imageView5">
 
         <TextView
-            android:id="@+id/userName"
+            android:id="@+id/firstPlayer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="40dp"
             android:text="Kainat"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="15dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Vs"
+            android:textColor="@color/white"
             android:textSize="20dp" />
 
         <TextView
-            android:id="@+id/opponentName"
+            android:id="@+id/secondPlayer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
             android:text="Opponent"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="15dp" />
 
     </LinearLayout>
@@ -64,6 +67,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_marginLeft="120dp"
+            android:textColor="#A8A0A0"
             android:layout_height="wrap_content"
             android:text="Current Turn:-" />
 
@@ -71,6 +75,7 @@
             android:id="@+id/currentTurn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
             android:text="KAINAT"
             android:layout_marginLeft="15dp"
             android:textStyle="bold"/>
@@ -116,7 +121,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/grid" />
+        app:srcCompat="@drawable/grid_white" />
 
     <LinearLayout
         android:layout_width="314dp"
@@ -225,17 +230,22 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         app:cardCornerRadius="5dp"
+        app:cardBackgroundColor="#2C2B2B"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent">
 
         <TextView
+            android:id="@+id/opponentMessage"
+
+            android:textColor="@color/white"
+            android:text="Good Luck"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="@null"
-            android:hint="Opponent message Here"
+            android:hint="Good Luck"
             android:textSize="32sp" />
     </androidx.cardview.widget.CardView>
 
@@ -250,8 +260,11 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <EditText
+            android:backgroundTint="@color/white"
+            android:textColorHint="@color/white"
             android:id="@+id/msg"
             android:layout_width="wrap_content"
+            android:textColor="@color/white"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint="Message" />
@@ -263,13 +276,9 @@
             android:onClick="send"
             android:layout_height="30dp"
             android:layout_marginTop="10dp"
-            android:src="@drawable/send" />
+            android:src="@drawable/send_white" />
 
     </LinearLayout>
-
-
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

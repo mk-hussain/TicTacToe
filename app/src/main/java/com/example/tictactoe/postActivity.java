@@ -1,26 +1,19 @@
 package com.example.tictactoe;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.TextView;
-
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -80,7 +73,6 @@ public class postActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(Uri uri) {
                             GoogleSignInAccount signInAccount= GoogleSignIn.getLastSignedInAccount(getApplicationContext());
-                            String LoginUID=signInAccount.getId();
                             String LoginUserID=signInAccount.getEmail();//this we should show some were so that user can know with which id he is logged in
                             String UserName=modifiedUserName(LoginUserID);//we remove @gmail.com as firebase wont accept it  as string
                             //String downloadString=taskSnapshot.getMetadata().getReference().getDownloadUrl().toString();

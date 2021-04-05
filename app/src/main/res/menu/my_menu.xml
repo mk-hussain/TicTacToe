@@ -14,9 +14,9 @@
         android:icon="@drawable/ic_baseline_more_vert_24" >
         <menu>
             <item
-                android:title="Settings"
-                android:icon="@drawable/ic_baseline_settings_24"
-                android:id="@+id/settings"
+                android:title="Play/Pause"
+                android:icon="@drawable/music_icon"
+                android:id="@+id/play_pause"
                 app:showAsAction="never"/>
             <item
                 android:title="Play With BOT"
