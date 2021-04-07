@@ -15,7 +15,7 @@
         android:src="@drawable/ttt"/>
 
     <LinearLayout
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="80dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -24,6 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"
+            android:paddingLeft="10dp"
             android:text="Enter 1st Player Name :-"
             android:textSize="20sp" />
         <EditText
@@ -44,6 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"
+            android:paddingLeft="10dp"
             android:text="Enter 2nd Player Name :-"
             android:textSize="20sp" />
         <EditText

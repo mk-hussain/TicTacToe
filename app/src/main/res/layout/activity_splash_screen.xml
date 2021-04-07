@@ -13,6 +13,7 @@
         android:layout_width="352dp"
         android:layout_height="125dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/onlineMultiplayer"
         app:srcCompat="@drawable/ttt" />
@@ -21,7 +22,7 @@
         android:id="@+id/onlineMultiplayer"
         android:layout_width="383dp"
         android:layout_height="99dp"
-        android:layout_marginTop="108dp"
+        android:layout_marginTop="228dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

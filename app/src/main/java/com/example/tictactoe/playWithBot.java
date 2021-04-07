@@ -46,7 +46,6 @@ public class playWithBot extends AppCompatActivity {
         playingState=1;//only true if started 1 st time
 
         if (signInAccount != null) {
-
             name.setText(userName);
             // mail.setText(signInAccount.getEmail());- way to get mail id
         }
@@ -205,7 +204,7 @@ public class playWithBot extends AppCompatActivity {
                     finish();
                 }
             })
-            .setIcon(android.R.drawable.ic_dialog_info)
+            .setIcon(R.drawable.dialog_info)
             .show();
     }
 

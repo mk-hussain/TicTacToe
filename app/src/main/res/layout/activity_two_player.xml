@@ -4,11 +4,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@drawable/back"
     android:layout_height="match_parent"
     tools:context=".twoPlayer">
 
     <ImageView
+        android:id="@+id/imageView7"
         android:layout_width="417dp"
+        android:layout_marginTop="30dp"
         android:layout_height="45dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -17,15 +20,14 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_width="411dp"
+        android:layout_height="32dp"
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/imageView7">
 
         <TextView
             android:id="@+id/firstName"
@@ -33,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="40dp"
             android:text="Kainat"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="15dp" />
 
         <TextView
@@ -48,64 +50,37 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
             android:text="Opponent"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="15dp" />
 
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_marginLeft="120dp"
             android:layout_height="wrap_content"
+            android:textColor="#A8A0A0"
+            android:layout_marginLeft="120dp"
             android:text="Current Turn:-" />
 
         <TextView
-            android:id="@+id/username2"
+            android:id="@+id/current_turn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="KAINAT"
             android:layout_marginLeft="15dp"
-            android:textStyle="bold"/>
+            android:textColor="@color/white"
+            android:text="KAINAT"
+            android:textStyle="bold" />
     </LinearLayout>
-
-     <!-- <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:text="KAINAT"
-            android:textStyle="bold" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="120dp"
-            android:text="0" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:text="OPPONENT"
-            android:textStyle="bold" />
-
-    </LinearLayout>-->
 
     <ImageView
         android:id="@+id/imageView3"
@@ -116,7 +91,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/grid" />
+        app:srcCompat="@drawable/grid_white" />
 
     <LinearLayout
         android:layout_width="314dp"
@@ -137,7 +112,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0"
                 android:onClick="tap"
-                android:tag="0"
+                android:tag="1"
                 />
 
             <ImageView
@@ -146,7 +121,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0"
                 android:onClick="tap"
-                android:tag="1" />
+                android:tag="2" />
 
             <ImageView
                 android:id="@+id/i3"
@@ -154,7 +129,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0"
                 android:onClick="tap"
-                android:tag="2" />
+                android:tag="3" />
         </LinearLayout>
 
         <LinearLayout
@@ -167,7 +142,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0"
                 android:onClick="tap"
-                android:tag="3" />
+                android:tag="4" />
 
             <ImageView
                 android:id="@+id/i5"
@@ -175,7 +150,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0"
                 android:onClick="tap"
-                android:tag="4" />
+                android:tag="5" />
 
             <ImageView
                 android:id="@+id/i6"
@@ -183,7 +158,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0"
                 android:onClick="tap"
-                android:tag="5" />
+                android:tag="6" />
         </LinearLayout>
 
         <LinearLayout
@@ -197,7 +172,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0"
                 android:onClick="tap"
-                android:tag="6" />
+                android:tag="7" />
 
             <ImageView
                 android:id="@+id/i8"
@@ -205,7 +180,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0"
                 android:onClick="tap"
-                android:tag="7" />
+                android:tag="8" />
 
             <ImageView
                 android:id="@+id/i9"
@@ -214,7 +189,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0"
                 android:onClick="tap"
-                android:tag="8" />
+                android:tag="9" />
 
         </LinearLayout>
     </LinearLayout>

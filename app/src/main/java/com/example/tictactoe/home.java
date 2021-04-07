@@ -76,7 +76,7 @@ public class home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         getWindow().setStatusBarColor(this.getResources().getColor(R.color.black));//set status bar color BLACK
-        mediaPlayer = MediaPlayer.create(this, R.raw.music_background);
+        mediaPlayer = MediaPlayer.create(this, R.raw.doremon);
         mediaPlayer.start();
         mediaPlayer.setLooping(true);
         //    ToolBar Code Here

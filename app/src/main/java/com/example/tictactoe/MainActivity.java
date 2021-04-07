@@ -2,6 +2,7 @@ package com.example.tictactoe;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -25,15 +26,19 @@ import java.util.Iterator;
 import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
-
+    //playerSession for each game combination   is unique
+    //requestType=to-i have send request first,from-i have accepted the request
     String playerSession,userName,otherPlayer,LoginUID,requestType,myGameSign;
-    TextView msg,opponentMessage,firstPlayer,secondPlayer;
-    TextView currentTurn;
+    TextView msg,opponentMessage,firstPlayer,secondPlayer,currentTurn;
     ImageView i1,i2,i3,i4,i5,i6,i7,i8,i9;
+    MediaPlayer tapSound;
+    //playingState=1-can be played further,2-someone has won,3-draw
     int playingState = 0;
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference myRef = database.getReference();
+    FirebaseDatabase database = FirebaseDatabase.getInstance();// gives reference to whole database
+    DatabaseReference myRef = database.getReference();// gives reference to parent node
+    //activePlayer=1- i have chance right now,2-2nd player has the chance(think in term of both the player)
     int activePlayer = 1;
+    //to define which which block no player1 and player2 has filled
     ArrayList<Integer> Player1 = new ArrayList<>();
     ArrayList<Integer> Player2 = new ArrayList<>();
 
@@ -42,9 +47,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getWindow().setStatusBarColor(this.getResources().getColor(R.color.black));//set status bar color BLACK
-
+        // initializing the views
         currentTurn=findViewById(R.id.currentTurn);
         firstPlayer=findViewById(R.id.firstPlayer);
+        tapSound=MediaPlayer.create(this,R.raw.tapsound);
         firstPlayer.setText(userName);
         secondPlayer=findViewById(R.id.secondPlayer);secondPlayer.setText(otherPlayer);
 
@@ -66,8 +72,9 @@ public class MainActivity extends AppCompatActivity {
         requestType = getIntent().getExtras().get("request_type").toString();
         playerSession = getIntent().getExtras().get("player_session").toString();
 
-        playingState = 1;
+        playingState = 1;// at the starting of the game obvously it can be playable
 
+        // setting opponent message into TextView
         final String[] oppMsg = new String[1];
         opponentMessage=findViewById(R.id.opponentMessage);
         myRef.child("chat").child(playerSession).child(userName).addValueEventListener(new ValueEventListener() {
@@ -82,31 +89,32 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        if(requestType.equals("From")){
+        if(requestType.equals("From")){// ie if i am accepting the request
             myGameSign = "0";
-            currentTurn.setText("Your turn");
+            currentTurn.setText("Your turn");// those who accept request will get 1st chance
             myRef.child("playing").child(playerSession).child("turn").setValue(userName);
-        }else{
+        }else{// ie i have send the request first
             myGameSign = "X";
-            currentTurn.setText(otherPlayer);
+            currentTurn.setText(otherPlayer);// i will get 2nd chance
             myRef.child("playing").child(playerSession).child("turn").setValue(otherPlayer);
         }
         myRef.child("playing").child(playerSession).child("turn").addValueEventListener(new ValueEventListener() {
+            // changing the turn every time
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 try{
                     String value = (String) dataSnapshot.getValue();
-                    if(value.equals(userName)) {
-                        currentTurn.setText("Your turn");
-                        setEnableClick(true);
-                        activePlayer = 1;
-                    }else if(value.equals(otherPlayer)){
+                    if(value.equals(userName)) {// i am active
+                        currentTurn.setText("Your turn");// my turn
+                        setEnableClick(true);// i can click
+                        activePlayer = 1;// i am active
+                    }else if(value.equals(otherPlayer)){// not my turn
                         currentTurn.setText(otherPlayer);
-                        setEnableClick(false);
-                        activePlayer = 2;
+                        setEnableClick(false);// i cannot click
+                        activePlayer = 2;// i am not active
                     }
                 }catch (Exception e){
-                    e.printStackTrace();
+                    e.printStackTrace();// print whaterver the exception is
                 }
             }
 
@@ -116,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         myRef.child("playing").child(playerSession).child("game")
-                .addValueEventListener(new ValueEventListener() {
+                .addValueEventListener(new ValueEventListener() {//this is triggered as a result of adding a block by someone
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         try{
@@ -127,18 +135,16 @@ public class MainActivity extends AppCompatActivity {
                             if(map != null){
                                 String value = "";
                                 String firstPlayer = userName;
-                                for(String key:map.keySet()){
+                                for(String key:map.keySet()){// for each key in the keySet
                                     value = (String) map.get(key);
                                     if(value.equals(userName)){
-                                        //activePlayer = myGameSign.equals("X")?1:2;
                                         activePlayer = 2;
                                     }else{
-                                        //activePlayer = myGameSign.equals("X")?2:1;
                                         activePlayer = 1;
                                     }
                                     firstPlayer = value;
-                                    String[] splitID = key.split(":");
-                                    OtherPlayer(Integer.parseInt(splitID[1]));
+                                    String[] splitID = key.split(":");//
+                                    OtherPlayer(Integer.parseInt(splitID[1]));// i get to know which block other user has tap
                                 }
                             }
                         }catch (Exception e){
@@ -155,25 +161,15 @@ public class MainActivity extends AppCompatActivity {
 
     public void tap(View view) {
         ImageView selectedImage = (ImageView) view;
+        tapSound.start();
         if(playerSession.length() <= 0){
             Intent intent = new Intent(getApplicationContext(),home.class);
             startActivity(intent);
             finish();
         }else {
-            int selectedBlock = 0;
-            switch ((selectedImage.getId())) {
-                case R.id.i1: selectedBlock = 1; break;
-                case R.id.i2: selectedBlock = 2; break;
-                case R.id.i3: selectedBlock = 3; break;
-                case R.id.i4: selectedBlock = 4; break;
-                case R.id.i5: selectedBlock = 5; break;
-                case R.id.i6: selectedBlock = 6; break;
-                case R.id.i7: selectedBlock = 7; break;
-                case R.id.i8: selectedBlock = 8; break;
-                case R.id.i9: selectedBlock = 9; break;
-            }
-            myRef.child("playing").child(playerSession).child("game").child("block:"+selectedBlock).setValue(userName);
-            myRef.child("playing").child(playerSession).child("turn").setValue(otherPlayer);
+            int selectedBlock = Integer.parseInt(selectedImage.getTag().toString());
+            myRef.child("playing").child(playerSession).child("game").child("block:"+selectedBlock).setValue(userName);//add the block and name to firebase
+            myRef.child("playing").child(playerSession).child("turn").setValue(otherPlayer);//update the turn
             setEnableClick(false);
             activePlayer = 2;
             PlayGame(selectedBlock, selectedImage);
@@ -182,12 +178,23 @@ public class MainActivity extends AppCompatActivity {
 
     public void PlayGame(int selectedBlock, ImageView selectedImage){
         if(playingState == 1) {
-            if (activePlayer == 1) {
-                selectedImage.setImageResource(R.drawable.x);
-                Player1.add(selectedBlock);
-            }else if (activePlayer == 2) {
-                selectedImage.setImageResource(R.drawable.o);
-                Player2.add(selectedBlock);
+            if (requestType.equals("To")){
+                if (activePlayer == 1) {
+                    selectedImage.setImageResource(R.drawable.x);
+                    Player1.add(selectedBlock);
+                }else if (activePlayer == 2) {
+                    selectedImage.setImageResource(R.drawable.o);
+                    Player2.add(selectedBlock);
+                }
+            }
+            else if (requestType.equals("From")){
+                if (activePlayer == 1) {
+                    selectedImage.setImageResource(R.drawable.o);
+                    Player1.add(selectedBlock);
+                }else if (activePlayer == 2) {
+                    selectedImage.setImageResource(R.drawable.x);
+                    Player2.add(selectedBlock);
+                }
             }
             selectedImage.setEnabled(false);
             CheckWinner();
@@ -195,8 +202,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void CheckWinner(){
-        int winner = 0;
-        ArrayList<Integer> emptyBlocks = new ArrayList<Integer>();
+        int winner = 0;// no one has won
+        ArrayList<Integer> emptyBlocks = new ArrayList<>();// to find draw case
 
         /********* for Player 1 *********/
         if(Player1.contains(1) && Player1.contains(2) && Player1.contains(3)){ winner = 1; }
@@ -218,7 +225,7 @@ public class MainActivity extends AppCompatActivity {
         if(Player2.contains(1) && Player2.contains(5) && Player2.contains(9)){ winner = 2; }
         if(Player2.contains(3) && Player2.contains(5) && Player2.contains(7)){ winner = 2; }
 
-        if(winner != 0 && playingState == 1){
+        if(winner != 0 && playingState == 1){//some one is winner
             if(winner == 1){
                 ShowAlert(otherPlayer +" is winner");
             }else if(winner == 2){
@@ -288,7 +295,7 @@ public class MainActivity extends AppCompatActivity {
                         finish();
                     }
                 })
-                .setIcon(android.R.drawable.ic_dialog_info)
+                .setIcon(R.drawable.dialog_info)
                 .show();
     }
     private void setEnableClick(boolean b){
@@ -307,7 +314,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onDestroy() {
+    protected void onDestroy() {// if back is pressed
         myRef.child("users").child(userName).child("Request").setValue(LoginUID);
         super.onDestroy();
     }
